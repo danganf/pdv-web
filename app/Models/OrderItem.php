@@ -1,12 +1,25 @@
 <?php
 
-namespace App\Model;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class OrderItem
+ * 
+ * @property int $id
+ * @property int $order_id
+ * @property int $product_id
+ * @property string $qty
+ * @property decimal $price
+ * @package App\Models
+ * 
+ */
+
 class OrderItem extends Model
 {
-    protected $table = 'order_item';
+	protected $table = 'order_item';
+	public $timestamps = false;
 
     public function order()
 	{

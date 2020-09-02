@@ -1,28 +1,25 @@
 <?php
 
-namespace App\Model;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Category
+ * Class Product
  * 
  * @property int $id
  * @property string $sku
  * @property string $name
  * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
+ * @property \Carbon\Carbon $updated_at 
+ * @package App\Models
  * 
- * @property \App\Models\Store $store
- * @property \Illuminate\Database\Eloquent\Collection $banner_promotionals
- * @property \Illuminate\Database\Eloquent\Collection $products
- *
- * @package App\Model
  */
 
 class Product extends Model
 {
     protected $table = 'product';
+    protected $hidden = ['pivot'];
 
     /**
      * The roles that belong to the user.
