@@ -49,9 +49,6 @@
             }
 
             .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
@@ -60,6 +57,23 @@
 
             .m-b-md {
                 margin-bottom: 30px;
+            }
+
+            .btn{
+                border-radius: 5px;
+                padding: 1em;
+                font-size: .87em;
+                margin-left: 30px;
+            }
+            .order{
+                background: #eb4314;
+                color: white;                
+            }
+            .order:hover{
+                background-color: #ef6843;
+            }
+            .docs:hover{
+                font-style: italic;
             }
         </style>
     </head>
@@ -85,14 +99,8 @@
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="" class="btn docs">DOCUMENTAÇÃO</a>
+                    <a href="{{route('order')}}" class="btn order">ABRIR VENDA</a>
                 </div>
             </div>
         </div>
