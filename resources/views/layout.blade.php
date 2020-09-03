@@ -53,6 +53,75 @@
         <!-- end main-painel -->
 
     </div>
+    <section class="modal-container" data-modal="container">
+    <div class="my-modal">
+      <button data-modal="fechar" class="fechar">X</button>
+      <form action="" id="form-modal" class="form-modal">
+            <h4>Endereço de entrega</h4>
+            <div class="row">
+                <div class="col-md-4 pr-1 div">
+                    <div class="form-group">
+                        <label for="zip_code">
+                            CEP*
+                            <div class="lds-ellipsis spinner-cep" required style="top: -29px;"><div></div><div></div><div></div><div></div></div>
+                        </label>
+                        <input type="text" class="form-control" maxlength="9" id="zip_code" name="zip_code" placeholder="99999-999" required>
+                    </div>
+                </div>
+                <div class="col-md-8 pr-1 div">
+                    <div class="form-group">
+                        <label for="address">Endereço*</label>
+                        <input type="text" class="form-control" id="address" name="address" placeholder="" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 pr-1 div">
+                    <div class="form-group">
+                        <label for="number">Número</label>
+                        <input type="text" class="form-control" id="number" name="number" placeholder="">
+                    </div>
+                </div>
+                <div class="col-md-6 pr-1 div">
+                    <div class="form-group">
+                        <label for="comp">Complemento</label>
+                        <input type="text" class="form-control" id="comp" name="comp" placeholder="">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 pr-1 div">
+                    <div class="form-group">
+                        <label for="city">Cidade*</label>
+                        <input type="text" class="form-control" id="city" name="city" placeholder="" required>
+                    </div>
+                </div>
+                <div class="col-md-6 pr-1 div">
+                    <div class="form-group">
+                        <label for="neighborhood">Bairro*</label>
+                        <input type="text" class="form-control" id="neighborhood" name="neighborhood" placeholder="" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 pr-1 div">
+                    <div class="form-group">
+                        <label for="uf">UF*</label>
+                        <input type="text" class="form-control" id="uf" name="uf" placeholder="" required>
+                    </div>
+                </div>
+                <div class="col-md-8 pr-1 div">
+                    <div class="form-group">
+                    <button type="submit" data-create class="btn btn-info btn-round pull-right show">Fechar pedido</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 pr-1 div error"></div>
+            </div>
+      </form>
+    </div>
+  </section>
     <script src="./assets/js/order.js"></script>
     <script>
         let order = new Order();

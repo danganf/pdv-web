@@ -108,12 +108,114 @@ class Order{
             total += (price * qty);
         } );
         if(total > 0){
-            this.initModal();
+            this.initFinalize();
         }
         document.querySelector('[data-total]').innerHTML = total.toFixed(2)
     }
-    initModal(){
+    initFinalize(){
         const elemBtn = document.querySelector('[data-btn]');
         elemBtn.style.display = 'block';
+        elemBtn.addEventListener('click', (event) => {
+            const modal = document.querySelector('.modal-container');
+            const elemSpinner = document.querySelector('.spinner-cep');
+            const elemError = document.querySelector('div.error');            
+            
+            elemError.innerHTML = '';
+            modal.classList.add('ativo');
+            elemSpinner.style.display = 'none';
+            
+            const elemZipCode = document.querySelector('#zip_code');
+            elemZipCode.focus();
+            elemZipCode.addEventListener('change', (x) => {
+                if(elemZipCode.value.length > 0){
+                    elemSpinner.style.display = 'inline-block';
+                    const result = fetch('./api/cep/'+elemZipCode.value);
+                    result.then( (resolve) => {
+                        return resolve.json()
+                    } )
+                    .then( data => {
+                        elemSpinner.style.display = 'none';
+                        if( typeof data.error === 'undefined' ){
+                            elemError.innerHTML = '';
+                            document.querySelector('#address').value = data.address;
+                            document.querySelector('#comp').value = data.comp;
+                            document.querySelector('#neighborhood').value = data.neighborhood;
+                            document.querySelector('#city').value = data.city;
+                            document.querySelector('#uf').value = data.uf;
+                        } else {
+                            elemError.innerHTML = `<div class="alert alert-danger">${data.messages}<span></span></div>`
+                        }
+                    } )
+                }
+            });
+
+            const btnCreate = document.querySelector('[data-create]');
+
+            modal.querySelector('[data-modal="fechar"]').addEventListener('click', (e) => {                
+                modal.classList.remove('ativo');
+                elemZipCode.value = '';
+                btnCreate.removeEventListener('click', this.bindCreateOrder)
+                document.getElementById("form-modal").reset();
+            })
+
+            btnCreate.addEventListener('click', this.bindCreateOrder)
+
+        })                
+    }
+    bindCreateOrder = (event) => {        
+        event.preventDefault();
+        const form = document.getElementById('form-modal');
+        let order = {
+            items: []
+        }
+        let msgError = null;
+        let textHtml = event.target.innerHTML;
+        form.querySelectorAll('input').forEach( row => {
+            let value = row.value;
+            order[row.getAttribute('name')] = value ? value : null;            
+            if( row.getAttribute('required') !== null && !value ){
+                msgError = 'Existe(m) campo(s) obrigatório(s) em branco'                
+                row.classList.add('error');
+            } else {
+                row.classList.remove('error');
+            }
+        } );
+
+        if( msgError === null ){            
+            this.showMsgError('');
+            document.querySelectorAll('tr[data-item]').forEach( row => {            
+                order.items.push({ 
+                    sku: row.getAttribute('data-item'), 
+                    qty: +row.querySelector('span[data-qty]').innerHTML,
+                    price: +row.querySelector('span[data-price]').innerHTML
+                })
+            })
+            
+            event.target.setAttribute('disabled','disabled')
+            event.target.innerHTML = `Enviando...`
+
+            const result = fetch('./api/order',{
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                },
+                method: "POST",
+                body: JSON.stringify(order)
+            })
+
+            console.log(result,JSON.stringify(order));
+
+        } else {
+            this.showMsgError(msgError)
+        }
+    }
+    showMsgError(msg){
+        const elemError = document.querySelector('div.error')        
+        if( msg ){
+            msg = `<div class="alert alert-danger">${msg}<span></span></div>`
+        } else {
+            msg = '';
+        }
+        elemError.innerHTML = msg;
     }
 }

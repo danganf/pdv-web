@@ -23,7 +23,8 @@
     .lds-ellipsis{display: none;}
     .title-item{position: relative;}
     .title-item button{position: absolute;right: 0;top:-16px;font-size: .6em;}
-    button[data-btn]{display: none;}
+    .card button[data-btn]{display: none;}
+    input.error{border: 1px solid red;}
 
 </style>
 @endsection

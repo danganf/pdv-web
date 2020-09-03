@@ -12,7 +12,7 @@ class SrvCep{
         'logradouro' => 'address', 
         'complemento' => 'comp', 
         'bairro' => 'neighborhood', 
-        'cidade' => 'city', 
+        'localidade' => 'city', 
         'uf' => 'uf', 
     ];
 
