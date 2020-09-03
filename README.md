@@ -34,3 +34,32 @@ Se ocorreu tudo bem, as tabelas foram criadas no banco definido no `config/datab
 Agora, execute o comando abaixo para criar registros de fornecedores e catalogos de testes.
 
 > php artisan db:seed
+
+## Catalogo teste para as consultas
+
+> California Salada Chicken - refer: 010101
+
+> FRESH Chicken Abacaxi - refer: 010209
+
+> POKE Atum Special - refer: 223344
+
+> POKE Camarão - refer: 332244
+
+> AÇAÍ @500ML - refer: 112233
+
+> Farofa cebola - refer: 339988
+
+> Bobó Cogumelo & Palmito - refer: 342321
+
+> Bolo de Maça & Canela INTEGRAL - refer: 34de56
+
+> Bolo de Milho e Banana Passas - refer: bolo2233
+
+> Brownie Fit Amendoim - refer: b4532
+
+> CANELONE BERINGELA QUATRO QUEIJOS - refer: 45675
+
+> Canja Special - refer: 23cd22
+
+> Café expresso - refer: 123098
+
