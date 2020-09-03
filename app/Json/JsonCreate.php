@@ -30,11 +30,18 @@ class JsonCreate extends JsonAbstract implements JsonInterface
         if ( !$this->validator->valid( $array , $fields ) ) {
             $this->error( $this->validator->error() );
         }
-        
-        dd('asasass');
-        //$this->create('total_purchase_value', convert_string_float($this->get('total_purchase_value')) );
 
-        
+        $fields = [ 'sku', 'qty', 'price' ];
+
+        $amountItems = 0;
+        foreach ( $this->get('items') as $key => $row ) {
+            if (!$this->validator->valid( objectToArray( $row ) , $fields)){
+                $this->error($this->validator->error());
+            }
+            $amountItems += $row->price * $row->qty;
+        }    
+        $this->create('total_price', (float)$amountItems );
+
         return TRUE;
     }
 

@@ -22,6 +22,7 @@ return [
     'search_error'               => 'Ouve um problema na busca',
     'error_data_base'            => 'Ocorreu um erro na chamada ao Banco de dados',
     'process_error'              => 'Ocorreu um erro',
+    'create_order_error'         => 'Ocorreu um erro ao criar o pedido',
     'product_not_found'          => 'Produto não encontrado',
     'products_not_found'         => 'Nenhum produto foi encontrado',
     'registers_not_found'        => 'Registros não encontrados',
