@@ -79,7 +79,7 @@ class Order{
             let htmlProviders = '';
             if( objItem.providers.length > 0 ){
                 objItem.providers.split(',').forEach( provider => {
-                    htmlProviders += `<p class="list-provider">${provider}</p>`
+                    htmlProviders += `<p class="list-provider">- ${provider}</p>`
                 } )
             }
 

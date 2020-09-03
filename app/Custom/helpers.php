@@ -19,3 +19,8 @@ if ( !function_exists('array_pull')) {
         return \Illuminate\Support\Arr::pull($array, $key, $default);
     }
 }
+if ( !function_exists('array_add')) {
+    function array_add( &$array, $key, $default=null ){
+        return \Illuminate\Support\Arr::add($array, $key, $default);
+    }
+}

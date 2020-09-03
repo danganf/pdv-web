@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Facades\App\MyClass\Response;
 
 class Handler extends ExceptionHandler
 {
@@ -50,6 +51,16 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if( strpos( $request->path(), 'api/' ) !== FALSE ){
+            $return = Response::factory($exception);
+            if ( is_array( $return ) ){
+                $code =  array_get( $return, 'code', null );
+                $code = !$code ? $exception->getCode() : $code;
+                $code = !$code ? 400                   : $code;
+                //dd( $return, $code );
+                return msgErroJson($return['messages'], $code);
+            }
+        }
         return parent::render($request, $exception);
     }
 }
