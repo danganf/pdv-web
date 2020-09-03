@@ -22,13 +22,13 @@ class Order{
             spinner.style.display='inline-block';
             elemList.innerHTML = '';
 
-            const result = fetch('/api/catalog/');
+            const result = fetch('/api/catalog/?q='+value);
             result.then((resolve) => {
                 if( resolve.status === 200 ){                
                     return resolve.json();
                 } else {
-                    reject(resolve.json());
-                }
+                    return Promise.reject('Nenhum produto encontrado');
+                }              
             })
             .then((data) => {
                 spinner.style.display='none';  
@@ -42,8 +42,12 @@ class Order{
                 lastSearch = value;
                 this.selectProduct();
             })
-            .catch( (reject) => {
-                console.log(reject);
+            .catch( (message) => {
+                spinner.style.display='none';
+                let html = `<p class="list-prod" style="text-align: center;">
+                        <span class="name">${message}</span>
+                    </p>`;                
+                    elemList.innerHTML += html;
             } );
         }        
     }
@@ -202,8 +206,12 @@ class Order{
                 method: "POST",
                 body: JSON.stringify(order)
             })
-
-            console.log(result,JSON.stringify(order));
+            result.then( resolve => resolve.json() )        
+            .then( data => {
+                event.target.innerHTML = `Finalizando...`
+                this.showMsgSuccess( 'Pedido criado com sucesso' );
+                document.location.reload(true);
+            } )
 
         } else {
             this.showMsgError(msgError)
@@ -213,6 +221,15 @@ class Order{
         const elemError = document.querySelector('div.error')        
         if( msg ){
             msg = `<div class="alert alert-danger">${msg}<span></span></div>`
+        } else {
+            msg = '';
+        }
+        elemError.innerHTML = msg;
+    }
+    showMsgSuccess(msg){
+        const elemError = document.querySelector('div.error')        
+        if( msg ){
+            msg = `<div class="alert alert-success">${msg}<span></span></div>`
         } else {
             msg = '';
         }

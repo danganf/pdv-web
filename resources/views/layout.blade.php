@@ -20,12 +20,12 @@
         <!-- sidebar -->
         <div class="sidebar" data-color="white" data-active-color="danger">
             <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+                <a href="/" class="simple-text logo-mini">
                 <div class="logo-image-small">
                     <img src="./assets/img/logo-small.png">
                 </div>
                 </a>
-                <a href="http://www.creative-tim.com" class="simple-text logo-normal">PDV WEB</a>
+                <a href="/" class="simple-text logo-normal">PDV WEB</a>
             </div>
         </div>
         <!-- end sidebar -->
@@ -37,7 +37,7 @@
             <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">                        
-                        <a class="navbar-brand" href="#pablo">{{$title}}</a>
+                        <a class="navbar-brand">{{$title}}</a>
                     </div>
                 </div>
             </nav>

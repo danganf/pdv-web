@@ -9,6 +9,6 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function filter( Request $request, ProductRepository $productRepository ){
-        return msgJson( $productRepository->filter() );
+        return msgJson( $productRepository->filter($request->get('q')) );
     }
 }

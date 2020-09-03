@@ -13,9 +13,12 @@ class ProductRepository extends RepositoryAbstract{
         return $this;
     }
 
-    public function filter( $params = [] ){
+    public function filter( $term = null ){
         $this->setWith('providers', 'name');
-        
+        if( $term ){
+            $this->setWhere("name like '%$term%'");
+            $this->setWhere("sku ='$term'", 'or');
+        }    
         return $this->search();            
     }
 

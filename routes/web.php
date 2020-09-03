@@ -11,8 +11,4 @@
 |
 */
 
-Route::get('/', function () {
-    return view('pages.welcome');
-});
-
-Route::get('/order', 'OrderController@index')->name('order');
+Route::get('/', 'OrderController@index')->name('order');
