@@ -39,7 +39,7 @@ Agora, execute o comando abaixo para criar registros de fornecedores e catalogos
 
 ## DER
 
-O modelo ER das tabelas foi feito utilizando o Workbench e o arquivo do mesmo esta localizado em `database/DER.DER.mwb`.
+O modelo ER das tabelas foi feito utilizando o Workbench e o arquivo do mesmo esta localizado em `database/DER.mwb`.
 
 ## Catalogo teste para as consultas
 
