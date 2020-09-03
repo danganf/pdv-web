@@ -37,6 +37,10 @@ Agora, execute o comando abaixo para criar registros de fornecedores e catalogos
 
 > php artisan db:seed
 
+## DER
+
+O modelo ER das tabelas foi feito utilizando o Workbench e o arquivo do mesmo esta localizado em `database/DER.DER.mwb`.
+
 ## Catalogo teste para as consultas
 
 > California Salada Chicken - refer: 010101
