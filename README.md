@@ -16,6 +16,8 @@ Execute os seguintes passos abaixo, em um console, após clonar esse repositóri
 
 > composer install
 
+> cp envvars\local.env .env
+
 > php artisan key:generate
 
 Agora, configure o arquivo `config/database.php` e defina o nome da base de dados.
