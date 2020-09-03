@@ -14,13 +14,16 @@
     .itens .list-provider{margin-bottom: 0;}
     .itens .table-responsive{max-height: 500px;overflow-x: hidden;}
 
-    .list-prod{border-bottom: 1px dashed #e0ddd1;padding-bottom: 10px;cursor: pointer;}
+    .list-prod{border-bottom: 1px dashed #e0ddd1;padding: 0 0 17px 0;cursor: pointer;}
     .list-prod:hover{background-color: #F4F3EF;}
     .list-prod span{display: block;}
     .list-prod span.name{color: #51cbce;font-size: 1.8em;}
     .list-prod span.price{display: inline;}
 
     .lds-ellipsis{display: none;}
+    .title-item{position: relative;}
+    .title-item button{position: absolute;right: 0;top:-16px;font-size: .6em;}
+    button[data-btn]{display: none;}
 
 </style>
 @endsection
@@ -42,12 +45,7 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-12 pr-1" data-list-prod>
-                        <!--<p class="list-prod">
-                            <span class="name">Açai 500ml</span>
-                            <span class="desc">Refer.: 12332 - <span class="price badge badge-secondary">R$ 22,09</span></span>
-                        </p>-->
-                    </div>
+                    <div class="col-md-12 pr-1" data-list-prod></div>
                 </div>
             </div>
         </div>
@@ -65,19 +63,22 @@
                         </div>
                         <div class="col-7 col-md-8">
                             <div class="numbers">
-                            <p class="card-category">Valor total</p>
-                            <p class="card-title">R$ 0
-                                </p><p>
-                            </p></div>
+                                <p class="card-category">Valor total</p>
+                                <p class="card-title">R$ <span data-total>0.00</span></p>
+                                <p></p>
+                            </div>
                         </div>
                         </div>
                     </div>
                 </div>
-            </div>           
+            </div>          
             <div class="col-md-12">           
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Items</h4>
+                        <h4 class="card-title title-item">
+                            Itens
+                            <button type="submit" data-btn class="btn btn-primary btn-round pull-right">Finalizar</button>
+                        </h4>
                     </div>
                     <div class="card-body">
                         <ul class="list-unstyled team-members">
@@ -91,17 +92,7 @@
                                                 <th>Fornecedores</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    1x Dakota Rice r8ir dec
-                                                </td>
-                                                <td>R$ 36,738</td>
-                                                <td>
-                                                    <p class="list-provider">Dakota Rice</p>
-                                                    <p class="list-provider">Dakota Rice</p>
-                                                </td>
-                                            </tr>
+                                        <tbody data-items>
                                         </tbody>
                                     </table>
                                 </div>
