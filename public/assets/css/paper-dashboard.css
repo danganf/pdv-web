@@ -6504,11 +6504,34 @@ License - nucleoapp.com/license/
 
 .my-modal {
   background: white;
-  min-width: 500px;
   padding: 10px 30px 20px 30px;
   border: 10px solid #9f9a93;
   box-shadow: 0 0 0 10px white;
   position: relative;
+}
+
+@media screen and (max-width: 425px) {
+  .my-modal {
+    width: 370px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .my-modal {
+    width: 325px;
+  }
+}
+
+@media screen and (max-width: 325px) {
+  .my-modal {
+    width: 275px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .my-modal {
+    width: 500px;
+  }
 }
 
 @keyframes modal {
